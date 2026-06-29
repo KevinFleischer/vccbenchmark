@@ -1,0 +1,11 @@
+# local Python artifacts
+__pycache__/
+*.pyc
+
+# local scorer store (the public leaderboard is built from submissions/, not this)
+reference/evaluation/results_store.yaml
+
+# packaging / OS noise
+*.zip
+.DS_Store
+Thumbs.db
