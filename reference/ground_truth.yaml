@@ -1,0 +1,852 @@
+# =====================================================================
+# Visual Calendar Comprehension Benchmark (VCCB)
+# reference/ground_truth.yaml  --  SINGLE SOURCE OF TRUTH
+#
+# This file is consumed by the scorer and by the generators for
+# benchmark-week.ics and benchmark_index.md. It MUST NOT be exposed
+# to evaluated models (it lives under reference/).
+#
+# Terminology: 'Recoverable Truth' == 'Extractable Maximum'.
+# =====================================================================
+
+benchmark:
+  name: "Visual Calendar Comprehension Benchmark"
+  abbreviation: "VCCB"
+  version: "0.1.0"
+  view_window: "08:00-18:00"
+  week:
+    monday: "2022-01-17"
+    tuesday: "2022-01-18"
+    wednesday: "2022-01-19"
+    thursday: "2022-01-20"
+    friday: "2022-01-21"
+  canonical_events_count: 35
+  visible_blocks:
+    outlook: 39   # 32 single timed + 5 Bench20 + 2 all-day (Bench35 = one span bar)
+    notes: 40     # same, but Bench35 renders as 2 per-day banners
+    thunderbird: 40   # like Notes: Bench35 renders as 2 per-day banners
+  clients: ["Outlook", "HCL Notes", "Thunderbird"]
+  recoverable_truth_scope: per_client   # derived from client_profiles below
+
+# ---------------------------------------------------------------------
+# Recoverable Truth is DERIVED PER CLIENT from these capability profiles
+# (measured from screenshots). The scorer selects the profile for the
+# client an image belongs to; benchmark_index.md shows the expanded
+# per-client bands per event. Tolerances stay provisional until the
+# final handheld photos are calibrated.
+# ---------------------------------------------------------------------
+client_profiles:
+  outlook:
+    calibration_status: "measured (2022-01 screenshot)"
+    px_per_min: 1.0
+    min_label_box_px: 29
+    precise_time_indicator: true
+    duration:
+      clamp_below_min: 0
+      clamped_base_band: null
+      base_tol_min: 15
+      bonus_tol_min: 5
+    start:
+      base_tol_min: 5
+      bonus_tol_min: 2
+      clamp_displaces_start: false
+    multi_day_render: span_bar
+    recurrence_icon: true
+  notes:
+    calibration_status: "measured (2022-01 screenshot)"
+    px_per_min: 0.8
+    min_label_box_px: 19
+    precise_time_indicator: false
+    duration:
+      clamp_below_min: 30
+      clamped_base_band: [5, 30]
+      base_tol_min: 15
+      bonus_tol_min: 5
+    start:
+      base_tol_min: 5
+      bonus_tol_min: 2
+      clamp_displaces_start: false
+    multi_day_render: per_day_banner
+    recurrence_icon: false
+  thunderbird:
+    calibration_status: "measured (2022-01 screenshot)"
+    px_per_min: 1.26
+    min_label_box_px: 23
+    precise_time_indicator: false
+    duration:
+      clamp_below_min: 20
+      clamped_base_band: [5, 20]
+      base_tol_min: 15
+      bonus_tol_min: 5
+    start:
+      base_tol_min: 5
+      bonus_tol_min: 2
+      clamp_displaces_start: false
+    multi_day_render: per_day_banner
+    recurrence_icon: true
+
+derivation: >
+  Per client: if precise_time_indicator is false AND duration <=
+  clamp_below_min, the event is 'clamped' -> duration earns base credit for
+  any value in clamped_base_band and NO precision bonus; start earns base
+  credit only (clamping can displace the top edge). Otherwise 'linear' ->
+  duration/start base = canonical +/- base_tol_min, bonus = canonical +/-
+  bonus_tol_min. Outlook's accent bar makes ALL durations linear
+  (precise_time_indicator=true) -- short events stay precisely recoverable
+  there; Notes/Thunderbird clamp at 30 min. Multi-day all-day events: span
+  is directly recoverable where multi_day_render=span_bar (Outlook);
+  per_day_banner clients (Notes) also accept the adjacent-banners answer.
+
+events:
+  - id: Bench01
+    kind: timed
+    canonical:
+      title: "Anchor Flow Bench01"
+      day: Monday
+      date: 2022-01-17
+      start: "08:00"
+      end: "08:15"
+      start_min: 480
+      duration_min: 15
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Anchor", "Flow"]
+        id_token: "Bench01"
+        truncation_expected: false
+    rationale:
+      purpose: "Duration-coverage anchor: smallest readable block (15 min)."
+      phenomena: ["duration:15", "clamped-regime", "sparse-morning"]
+
+  - id: Bench02
+    kind: timed
+    canonical:
+      title: "Birch Wave Bench02"
+      day: Monday
+      date: 2022-01-17
+      start: "09:00"
+      end: "09:20"
+      start_min: 540
+      duration_min: 20
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Birch", "Wave"]
+        id_token: "Bench02"
+        truncation_expected: false
+    rationale:
+      purpose: "Duration coverage 20 min, still inside the clamped class."
+      phenomena: ["duration:20", "clamped-regime"]
+
+  - id: Bench03
+    kind: timed
+    canonical:
+      title: "Comet Ridge Bench03"
+      day: Monday
+      date: 2022-01-17
+      start: "10:00"
+      end: "10:30"
+      start_min: 600
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Comet", "Ridge"]
+        id_token: "Bench03"
+        truncation_expected: false
+    rationale:
+      purpose: "Duration coverage 30 min; measured at the clamp floor, so it is visually indistinguishable from 15/20 min (clamped class)."
+      phenomena: ["duration:30", "clamped-regime"]
+
+  - id: Bench04
+    kind: timed
+    canonical:
+      title: "Dune Harbor Bench04"
+      day: Monday
+      date: 2022-01-17
+      start: "11:00"
+      end: "11:45"
+      start_min: 660
+      duration_min: 45
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Dune", "Harbor"]
+        id_token: "Bench04"
+        truncation_expected: false
+    rationale:
+      purpose: "Duration coverage 45 min."
+      phenomena: ["duration:45", "linear-regime"]
+
+  - id: Bench05
+    kind: timed
+    canonical:
+      title: "Elm Sector Bench05"
+      day: Monday
+      date: 2022-01-17
+      start: "13:00"
+      end: "13:55"
+      start_min: 780
+      duration_min: 55
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Elm", "Sector"]
+        id_token: "Bench05"
+        truncation_expected: false
+    rationale:
+      purpose: "Duration coverage 55 min."
+      phenomena: ["duration:55", "linear-regime"]
+
+  - id: Bench06
+    kind: timed
+    canonical:
+      title: "Falcon Point Bench06"
+      day: Monday
+      date: 2022-01-17
+      start: "15:00"
+      end: "16:00"
+      start_min: 900
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Falcon", "Point"]
+        id_token: "Bench06"
+        truncation_expected: false
+    rationale:
+      purpose: "Duration coverage 60 min, exact one-hour block."
+      phenomena: ["duration:60", "linear-regime", "hour-aligned"]
+
+  - id: Bench07
+    kind: timed
+    canonical:
+      title: "Glacier Route Bench07"
+      day: Monday
+      date: 2022-01-17
+      start: "16:30"
+      end: "17:35"
+      start_min: 990
+      duration_min: 65
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Glacier", "Route"]
+        id_token: "Bench07"
+        truncation_expected: false
+    rationale:
+      purpose: "Duration coverage 65 min; moved to 16:30 so its end (17:35) stays inside the 18:00 view boundary."
+      phenomena: ["duration:65", "linear-regime", "late-afternoon"]
+
+  - id: Bench08
+    kind: timed
+    canonical:
+      title: "Harbor Crest Bench08"
+      day: Tuesday
+      date: 2022-01-18
+      start: "08:05"
+      end: "09:05"
+      start_min: 485
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Harbor", "Crest"]
+        id_token: "Bench08"
+        truncation_expected: false
+    rationale:
+      purpose: "Start-offset :05 with a clean 60-min duration."
+      phenomena: ["start-offset::05", "duration:60", "end::05"]
+
+  - id: Bench09
+    kind: timed
+    canonical:
+      title: "Island Grove Bench09"
+      day: Tuesday
+      date: 2022-01-18
+      start: "09:15"
+      end: "10:15"
+      start_min: 555
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Island", "Grove"]
+        id_token: "Bench09"
+        truncation_expected: false
+    rationale:
+      purpose: "Start-offset :15."
+      phenomena: ["start-offset::15", "duration:60"]
+
+  - id: Bench10
+    kind: timed
+    canonical:
+      title: "Jasper Field Bench10"
+      day: Tuesday
+      date: 2022-01-18
+      start: "10:30"
+      end: "11:30"
+      start_min: 630
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Jasper", "Field"]
+        id_token: "Bench10"
+        truncation_expected: false
+    rationale:
+      purpose: "Start-offset :30."
+      phenomena: ["start-offset::30", "duration:60"]
+
+  - id: Bench11
+    kind: timed
+    canonical:
+      title: "Kestrel Bay Bench11"
+      day: Tuesday
+      date: 2022-01-18
+      start: "11:45"
+      end: "12:45"
+      start_min: 705
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Kestrel", "Bay"]
+        id_token: "Bench11"
+        truncation_expected: false
+    rationale:
+      purpose: "Start-offset :45."
+      phenomena: ["start-offset::45", "duration:60"]
+
+  - id: Bench12
+    kind: timed
+    canonical:
+      title: "Lantern Peak Bench12"
+      day: Tuesday
+      date: 2022-01-18
+      start: "13:55"
+      end: "14:55"
+      start_min: 835
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Lantern", "Peak"]
+        id_token: "Bench12"
+        truncation_expected: false
+    rationale:
+      purpose: "Start-offset :55 (cross-hour start at xx:55)."
+      phenomena: ["start-offset::55", "duration:60", "cross-hour"]
+
+  - id: Bench13
+    kind: timed
+    canonical:
+      title: "Meadow Point Bench13"
+      day: Tuesday
+      date: 2022-01-18
+      start: "15:05"
+      end: "16:20"
+      start_min: 905
+      duration_min: 75
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Meadow", "Point"]
+        id_token: "Bench13"
+        truncation_expected: false
+    rationale:
+      purpose: "Start-offset :05 plus 75-min duration coverage."
+      phenomena: ["start-offset::05", "duration:75", "linear-regime"]
+
+  - id: Bench14
+    kind: timed
+    canonical:
+      title: "Nimbus Trail Bench14"
+      day: Wednesday
+      date: 2022-01-19
+      start: "09:00"
+      end: "09:30"
+      start_min: 540
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Nimbus", "Trail"]
+        id_token: "Bench14"
+        truncation_expected: true
+    rationale:
+      purpose: "Identical-start overlap (shortest of the 09:00 stack)."
+      phenomena: ["overlap:identical-start", "duration:30"]
+
+  - id: Bench15
+    kind: timed
+    canonical:
+      title: "Orion Gate Bench15"
+      day: Wednesday
+      date: 2022-01-19
+      start: "09:00"
+      end: "10:00"
+      start_min: 540
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Orion", "Gate"]
+        id_token: "Bench15"
+        truncation_expected: false
+    rationale:
+      purpose: "Identical-start overlap (middle of the 09:00 stack)."
+      phenomena: ["overlap:identical-start", "duration:60"]
+
+  - id: Bench16
+    kind: timed
+    canonical:
+      title: "Prairie Stone Bench16"
+      day: Wednesday
+      date: 2022-01-19
+      start: "09:00"
+      end: "11:00"
+      start_min: 540
+      duration_min: 120
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Prairie", "Stone"]
+        id_token: "Bench16"
+        truncation_expected: false
+    rationale:
+      purpose: "Identical-start overlap (longest of the 09:00 stack)."
+      phenomena: ["overlap:identical-start", "duration:120"]
+
+  - id: Bench17
+    kind: timed
+    canonical:
+      title: "Quartz Harbor Bench17"
+      day: Wednesday
+      date: 2022-01-19
+      start: "14:00"
+      end: "16:00"
+      start_min: 840
+      duration_min: 120
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Quartz", "Harbor"]
+        id_token: "Bench17"
+        truncation_expected: false
+    rationale:
+      purpose: "Offset overlap container (120 min) spanning two shorter events."
+      phenomena: ["overlap:offset", "duration:120"]
+
+  - id: Bench18
+    kind: timed
+    canonical:
+      title: "Raven Point Bench18"
+      day: Wednesday
+      date: 2022-01-19
+      start: "14:30"
+      end: "15:15"
+      start_min: 870
+      duration_min: 45
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Raven", "Point"]
+        id_token: "Bench18"
+        truncation_expected: false
+    rationale:
+      purpose: "Offset overlap, short block nested inside the container."
+      phenomena: ["overlap:offset", "duration:45"]
+
+  - id: Bench19
+    kind: timed
+    canonical:
+      title: "Summit Ridge Bench19"
+      day: Wednesday
+      date: 2022-01-19
+      start: "15:00"
+      end: "16:30"
+      start_min: 900
+      duration_min: 90
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Summit", "Ridge"]
+        id_token: "Bench19"
+        truncation_expected: false
+    rationale:
+      purpose: "Offset overlap, 90-min block crossing the container's end."
+      phenomena: ["overlap:offset", "duration:90"]
+
+  - id: Bench20
+    kind: timed
+    canonical:
+      title: "Tanner Grove Bench20"
+      day: "recurring (Mon-Fri)"
+      date: 2022-01-17    # first instance
+      start: "12:45"
+      end: "13:00"
+      start_min: 765
+      duration_min: 15
+      recurrence:
+        freq: WEEKLY
+        byday: ["MO", "TU", "WE", "TH", "FR"]
+        count: 5
+        instances: ["2022-01-17", "2022-01-18", "2022-01-19", "2022-01-20", "2022-01-21"]
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Tanner", "Grove"]
+        id_token: "Bench20"
+        truncation_expected: false
+    rationale:
+      purpose: "Recurring event Mon-Fri in a collision-free slot; drives the recurrence-recognition component."
+      phenomena: ["recurrence", "duration:15", "clamped-regime"]
+
+  - id: Bench21
+    kind: timed
+    canonical:
+      title: "Umbra Valley Bench21"
+      day: Thursday
+      date: 2022-01-20
+      start: "09:00"
+      end: "11:00"
+      start_min: 540
+      duration_min: 120
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Umbra", "Valley"]
+        id_token: "Bench21"
+        truncation_expected: false
+    rationale:
+      purpose: "Horizontal-compression block (full 120 min)."
+      phenomena: ["compression", "duration:120", "overlap:offset"]
+
+  - id: Bench22
+    kind: timed
+    canonical:
+      title: "Vertex Harbor Bench22"
+      day: Thursday
+      date: 2022-01-20
+      start: "09:05"
+      end: "10:55"
+      start_min: 545
+      duration_min: 110
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Vertex", "Harbor"]
+        id_token: "Bench22"
+        truncation_expected: false
+    rationale:
+      purpose: "Horizontal-compression block (110 min), :05 start."
+      phenomena: ["compression", "duration:110", "start-offset::05"]
+
+  - id: Bench23
+    kind: timed
+    canonical:
+      title: "Willow Crossing Bench23"
+      day: Thursday
+      date: 2022-01-20
+      start: "09:10"
+      end: "11:05"
+      start_min: 550
+      duration_min: 115
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Willow", "Crossing"]
+        id_token: "Bench23"
+        truncation_expected: false
+    rationale:
+      purpose: "Horizontal-compression block (115 min), :10 start, :05 end."
+      phenomena: ["compression", "duration:115", "end::05"]
+
+  - id: Bench24
+    kind: timed
+    canonical:
+      title: "Xenon Bridge Bench24"
+      day: Friday
+      date: 2022-01-21
+      start: "08:00"
+      end: "08:30"
+      start_min: 480
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Xenon", "Bridge"]
+        id_token: "Bench24"
+        truncation_expected: false
+    rationale:
+      purpose: "Back-to-back chain, slot 1."
+      phenomena: ["back-to-back", "duration:30"]
+
+  - id: Bench25
+    kind: timed
+    canonical:
+      title: "Yonder Creek Bench25"
+      day: Friday
+      date: 2022-01-21
+      start: "08:30"
+      end: "09:00"
+      start_min: 510
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Yonder", "Creek"]
+        id_token: "Bench25"
+        truncation_expected: false
+    rationale:
+      purpose: "Back-to-back chain, slot 2."
+      phenomena: ["back-to-back", "duration:30"]
+
+  - id: Bench26
+    kind: timed
+    canonical:
+      title: "Zenith Point Bench26"
+      day: Friday
+      date: 2022-01-21
+      start: "09:00"
+      end: "09:30"
+      start_min: 540
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Zenith", "Point"]
+        id_token: "Bench26"
+        truncation_expected: false
+    rationale:
+      purpose: "Back-to-back chain, slot 3."
+      phenomena: ["back-to-back", "duration:30"]
+
+  - id: Bench27
+    kind: timed
+    canonical:
+      title: "Aspen Harbor Bench27"
+      day: Friday
+      date: 2022-01-21
+      start: "09:30"
+      end: "10:00"
+      start_min: 570
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Aspen", "Harbor"]
+        id_token: "Bench27"
+        truncation_expected: false
+    rationale:
+      purpose: "Back-to-back chain, slot 4."
+      phenomena: ["back-to-back", "duration:30"]
+
+  - id: Bench28
+    kind: timed
+    canonical:
+      title: "Boulder Ridge Bench28"
+      day: Friday
+      date: 2022-01-21
+      start: "10:00"
+      end: "11:00"
+      start_min: 600
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Boulder", "Ridge"]
+        id_token: "Bench28"
+        truncation_expected: false
+    rationale:
+      purpose: "Dense overlap container (60 min)."
+      phenomena: ["overlap:offset", "dense-layout", "duration:60"]
+
+  - id: Bench29
+    kind: timed
+    canonical:
+      title: "Cascade Grove Bench29"
+      day: Friday
+      date: 2022-01-21
+      start: "10:15"
+      end: "10:45"
+      start_min: 615
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Cascade", "Grove"]
+        id_token: "Bench29"
+        truncation_expected: true
+    rationale:
+      purpose: "Dense overlap, short nested block (30 min)."
+      phenomena: ["overlap:offset", "dense-layout", "duration:30"]
+
+  - id: Bench30
+    kind: timed
+    canonical:
+      title: "Drift Valley Bench30"
+      day: Friday
+      date: 2022-01-21
+      start: "10:30"
+      end: "11:30"
+      start_min: 630
+      duration_min: 60
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Drift", "Valley"]
+        id_token: "Bench30"
+        truncation_expected: false
+    rationale:
+      purpose: "Dense overlap, 60-min block crossing the container's end."
+      phenomena: ["overlap:offset", "dense-layout", "duration:60"]
+
+  - id: Bench31
+    kind: timed
+    canonical:
+      title: "Ember Field Bench31"
+      day: Friday
+      date: 2022-01-21
+      start: "13:55"
+      end: "14:05"
+      start_min: 835
+      duration_min: 10
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Ember", "Field"]
+        id_token: "Bench31"
+        truncation_expected: false
+    rationale:
+      purpose: "Cross-hour boundary case, 10-min clamped block (13:55-14:05)."
+      phenomena: ["cross-hour", "duration:10", "clamped-regime", "end::05"]
+
+  - id: Bench32
+    kind: timed
+    canonical:
+      title: "Forest Trail Bench32"
+      day: Friday
+      date: 2022-01-21
+      start: "14:45"
+      end: "15:15"
+      start_min: 885
+      duration_min: 30
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Forest", "Trail"]
+        id_token: "Bench32"
+        truncation_expected: false
+    rationale:
+      purpose: "Cross-hour boundary case, 30-min block (14:45-15:15)."
+      phenomena: ["cross-hour", "duration:30"]
+
+  - id: Bench33
+    kind: timed
+    canonical:
+      title: "Granite Harbor Manufacturing Modernization Review Bench33"
+      day: Friday
+      date: 2022-01-21
+      start: "15:05"
+      end: "17:55"
+      start_min: 905
+      duration_min: 170
+      recurrence: null
+    recoverable:
+      timing: derived_per_client   # duration/start bands from client_profiles
+      title:
+        content_words: ["Granite", "Harbor", "Manufacturing", "Modernization", "Review"]
+        id_token: "Bench33"
+        truncation_expected: false
+    rationale:
+      purpose: "Multi-hour duration (170 min). Long title: in a tall single block it wraps and stays fully readable (measured) -- real truncation is exercised by the compressed overlap events."
+      phenomena: ["duration:170", "cross-hour", "long-title-wrap"]
+
+  - id: Bench34
+    kind: all_day
+    canonical:
+      title: "Duration Check Bench34"
+      day: Monday
+      start_date: 2022-01-17
+      end_date_inclusive: 2022-01-17
+      span_days: 1
+      all_day: true
+      recurrence: null
+    recoverable:
+      region: day-header        # rendered in the header band, not the time grid
+      start_day: Monday         # exact match required
+      span_days: 1              # exact match required
+      start: null               # all-day: no clock start time
+      duration: null            # all-day: no minute duration
+      title:
+        content_words: ["Duration", "Check"]
+        id_token: "Bench34"
+        truncation_expected: false
+    rationale:
+      purpose: "All-day single-day event in the Monday header band; tests the all-day vs timed distinction (model must not invent a clock time)."
+      phenomena: ["all-day", "single-day", "day-header"]
+
+  - id: Bench35
+    kind: all_day
+    canonical:
+      title: "Multiple Day Event Bench35"
+      day: Wednesday
+      start_date: 2022-01-19
+      end_date_inclusive: 2022-01-20
+      span_days: 2
+      all_day: true
+      recurrence: null
+    recoverable:
+      region: day-header        # rendered in the header band, not the time grid
+      start_day: Wednesday         # exact match required
+      span_days: 2              # exact match required
+      span_recoverable:         # MEASURED: clients differ
+        accept: ["single_multi_day_bar", "adjacent_same_title_banners"]
+        note: >
+          Outlook renders one bar spanning all columns (span directly
+          readable); Notes renders one all-day banner per day. Both a
+          single 2-day event and 2 adjacent same-title all-day
+          events count as fully correct.
+      start: null               # all-day: no clock start time
+      duration: null            # all-day: no minute duration
+      title:
+        content_words: ["Multiple", "Day", "Event"]
+        id_token: "Bench35"
+        truncation_expected: false
+    rationale:
+      purpose: "All-day event spanning Wed-Thu; tests multi-day span recognition as a single event across two day columns."
+      phenomena: ["all-day", "multi-day-span", "day-header"]
+

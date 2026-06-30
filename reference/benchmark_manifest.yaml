@@ -1,0 +1,29 @@
+# reference/benchmark_manifest.yaml
+# Maps each image filename to its application and capture condition.
+# Lives under reference/ ON PURPOSE: the capture condition and all answers stay
+# out of the blind image filenames. Filenames carry only an application-set code
+# and an index ([A|B|C][1..99]); the condition -> band mapping lives only here.
+#
+# Application codes:  A = MS Outlook,  B = HCL Notes,  C = Mozilla Thunderbird
+#
+# Recoverable bands depend on the APPLICATION only. The CONDITION is an
+# orthogonal robustness axis (perspective is an invertible transform, not a loss
+# of information), so the same bands apply across conditions of one application.
+#
+# Conditions: frontal_screenshot, frontal_photo, perspective_combined
+#             (perspective_combined = combined horizontal + vertical ~15 deg)
+#
+# Index convention within an application set (extend with more numbers if you
+# capture more shots): 1 = frontal_screenshot, 2 = frontal_photo,
+# 3 = perspective_combined.
+
+images:
+  "A1": {client: outlook,     condition: frontal_screenshot}
+  "A2": {client: outlook,     condition: frontal_photo}
+  "A3": {client: outlook,     condition: perspective_combined}
+  "B1": {client: notes,       condition: frontal_screenshot}
+  "B2": {client: notes,       condition: frontal_photo}
+  "B3": {client: notes,       condition: perspective_combined}
+  "C1": {client: thunderbird, condition: frontal_screenshot}
+  "C2": {client: thunderbird, condition: frontal_photo}
+  "C3": {client: thunderbird, condition: perspective_combined}
