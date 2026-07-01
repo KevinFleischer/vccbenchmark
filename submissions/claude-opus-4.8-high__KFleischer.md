@@ -1118,7 +1118,239 @@ events: []
 ## Image C1
 
 ```yaml
-events: []
+events:
+  - title: "Duration Check Bench34"
+    all_day: true
+    start_day: Monday
+    span_days: 1
+    recurring: false
+  - title: "Multiple Day Event Bench35"
+    all_day: true
+    start_day: Wednesday
+    span_days: 2
+    recurring: false
+  - title: "Anchor Flow Bench01"
+    day: Monday
+    start: "08:00"
+    end: "08:50"
+    all_day: false
+    recurring: false
+  - title: "Birch Wave Bench02"
+    day: Monday
+    start: "09:00"
+    end: "09:50"
+    all_day: false
+    recurring: false
+  - title: "Comet Ridge Bench03"
+    day: Monday
+    start: "10:00"
+    end: "10:50"
+    all_day: false
+    recurring: false
+  - title: "Dune Harbor Bench04"
+    day: Monday
+    start: "11:00"
+    end: "11:50"
+    all_day: false
+    recurring: false
+  - title: "Tanner Grove Bench20"
+    day: Monday
+    start: "12:45"
+    end: "13:45"
+    all_day: false
+    recurring: true
+  - title: "Elm Sector Bench05"
+    day: Monday
+    start: "13:00"
+    end: "13:45"
+    all_day: false
+    recurring: false
+  - title: "Falcon Point Bench06"
+    day: Monday
+    start: "15:00"
+    end: "16:00"
+    all_day: false
+    recurring: false
+  - title: "Glacier Route Bench07"
+    day: Monday
+    start: "16:25"
+    end: "17:25"
+    all_day: false
+    recurring: false
+  - title: "Harbor Crest Bench08"
+    day: Tuesday
+    start: "08:05"
+    end: "09:10"
+    all_day: false
+    recurring: false
+  - title: "Island Grove Bench09"
+    day: Tuesday
+    start: "09:15"
+    end: "10:20"
+    all_day: false
+    recurring: false
+  - title: "Jasper Field Bench10"
+    day: Tuesday
+    start: "10:30"
+    end: "11:30"
+    all_day: false
+    recurring: false
+  - title: "Kestrel Bay Bench11"
+    day: Tuesday
+    start: "11:45"
+    end: "12:45"
+    all_day: false
+    recurring: false
+  - title: "Tanner Grove Bench20"
+    day: Tuesday
+    start: "12:45"
+    end: "13:45"
+    all_day: false
+    recurring: true
+  - title: "Lantern Peak Bench12"
+    day: Tuesday
+    start: "13:55"
+    end: "15:00"
+    all_day: false
+    recurring: false
+  - title: "Meadow Point Bench13"
+    day: Tuesday
+    start: "15:00"
+    end: "16:15"
+    all_day: false
+    recurring: false
+  - title: "Nimbus Trail Bench14"
+    day: Wednesday
+    start: "09:00"
+    end: "09:45"
+    all_day: false
+    recurring: false
+  - title: "Orion Gate Bench15"
+    day: Wednesday
+    start: "09:00"
+    end: "10:15"
+    all_day: false
+    recurring: false
+  - title: "Prairie Stone Bench16"
+    day: Wednesday
+    start: "09:00"
+    end: "10:45"
+    all_day: false
+    recurring: false
+  - title: "Tanner Grove Bench20"
+    day: Wednesday
+    start: "12:45"
+    end: "13:45"
+    all_day: false
+    recurring: true
+  - title: "Quartz Harbor Bench17"
+    day: Wednesday
+    start: "14:00"
+    end: "16:00"
+    all_day: false
+    recurring: false
+  - title: "Raven Point Bench18"
+    day: Wednesday
+    start: "14:30"
+    end: "15:15"
+    all_day: false
+    recurring: false
+  - title: "Summit Ridge Bench19"
+    day: Wednesday
+    start: "15:00"
+    end: "16:15"
+    all_day: false
+    recurring: false
+  - title: "Umbra Valley Bench21"
+    day: Thursday
+    start: "09:00"
+    end: "10:45"
+    all_day: false
+    recurring: false
+  - title: "Vertex Harbor Bench22"
+    day: Thursday
+    start: "09:05"
+    end: "11:00"
+    all_day: false
+    recurring: false
+  - title: "Willow Crossing Bench23"
+    day: Thursday
+    start: "09:10"
+    end: "10:45"
+    all_day: false
+    recurring: false
+  - title: "Tanner Grove Bench20"
+    day: Thursday
+    start: "12:45"
+    end: "13:45"
+    all_day: false
+    recurring: true
+  - title: "Xenon Bridge Bench24"
+    day: Friday
+    start: "08:00"
+    end: "08:30"
+    all_day: false
+    recurring: false
+  - title: "Yonder Creek Bench25"
+    day: Friday
+    start: "08:30"
+    end: "09:00"
+    all_day: false
+    recurring: false
+  - title: "Zenith Point Bench26"
+    day: Friday
+    start: "09:00"
+    end: "09:30"
+    all_day: false
+    recurring: false
+  - title: "Aspen Harbor Bench27"
+    day: Friday
+    start: "09:30"
+    end: "10:00"
+    all_day: false
+    recurring: false
+  - title: "Boulder Ridge Bench28"
+    day: Friday
+    start: "10:00"
+    end: "11:00"
+    all_day: false
+    recurring: false
+  - title: "Cascade Grove Bench29"
+    day: Friday
+    start: "10:15"
+    end: "11:00"
+    all_day: false
+    recurring: false
+  - title: "Drift Valley Bench30"
+    day: Friday
+    start: "10:30"
+    end: "11:15"
+    all_day: false
+    recurring: false
+  - title: "Tanner Grove Bench20"
+    day: Friday
+    start: "12:45"
+    end: "13:45"
+    all_day: false
+    recurring: true
+  - title: "Ember Field Bench31"
+    day: Friday
+    start: "13:55"
+    end: "14:30"
+    all_day: false
+    recurring: false
+  - title: "Forest Trail Bench32"
+    day: Friday
+    start: "14:45"
+    end: "15:15"
+    all_day: false
+    recurring: false
+  - title: "Granite Harbor Manufacturing Modernization Review Bench33"
+    day: Friday
+    start: "15:05"
+    end: "17:15"
+    all_day: false
+    recurring: false
 ```
 
 ## Image C2

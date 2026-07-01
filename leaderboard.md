@@ -1,6 +1,6 @@
 # VCCB Leaderboard
 
-_Generated 2026-06-30 19:15 UTC from 52 scored images across 7 submission(s)._
+_Generated 2026-07-01 19:18 UTC from 53 scored images across 7 submission(s)._
 
 Scores are self-normalized per application (a flawless extraction = 100%). Rows are kept separate per model **and** per prompt.
 
@@ -9,7 +9,7 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | Model | Prompt | Total | Outlook | Notes | Thunderbird |
 |---|---|---|---|---|---|
 | human | 7e5d81ce | 99.24% | 99.69% | 98.34% | 99.69% |
-| claude-opus-4.8-high | 7e5d81ce | 83.43% | 80.04% | 86.81% | — |
+| claude-opus-4.8-high | 7e5d81ce | 86.40% | 80.04% | 86.81% | 92.34% |
 | chatGPT | 7e5d81ce | 75.41% | 75.41% | — | — |
 | unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_XS | 7e5d81ce | 58.93% | 61.76% | 48.32% | 66.71% |
 | claude-haiku-4.5-extended | 7e5d81ce | 47.81% | 46.61% | 44.19% | 52.62% |
@@ -21,7 +21,7 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | Model | Prompt | Frontal Screenshot | Frontal Photo | Perspective Combined |
 |---|---|---|---|---|
 | human | 7e5d81ce | 99.24% | 99.24% | 99.24% |
-| claude-opus-4.8-high | 7e5d81ce | 87.29% | 66.10% | 86.26% |
+| claude-opus-4.8-high | 7e5d81ce | 88.97% | 66.10% | 86.26% |
 | chatGPT | 7e5d81ce | 75.49% | 81.54% | 69.19% |
 | unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_XS | 7e5d81ce | 62.85% | 63.73% | 50.21% |
 | claude-haiku-4.5-extended | 7e5d81ce | 53.35% | 49.89% | 40.18% |
@@ -70,7 +70,7 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 
 | Submission | Submitter | Model | Prompt | Run date | Images |
 |---|---|---|---|---|---|
-| `038cfc3f1cef` | KFleischer | claude-opus-4.8-high | 7e5d81ce | 2026-06-30 | 4 |
+| `038cfc3f1cef` | KFleischer | claude-opus-4.8-high | 7e5d81ce | 2026-06-30 | 5 |
 | `49c2cf3c0c6e` | KFleischer | unsloth/gemma-4-31B-it-qat-GGUFUD-Q4_K_XL | 7e5d81ce | 2026-06-30 | 9 |
 | `82d879e79818` | KFleischer | unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M | 7e5d81ce | 2026-06-30 | 9 |
 | `a4157c0d9a66` | KFleischer | claude-haiku-4.5-extended | 7e5d81ce | 2026-06-30 | 9 |
