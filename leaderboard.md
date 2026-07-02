@@ -1,6 +1,6 @@
 # VCCB Leaderboard
 
-_Generated 2026-07-01 19:18 UTC from 53 scored images across 7 submission(s)._
+_Generated 2026-07-02 12:32 UTC from 71 scored images across 9 submission(s)._
 
 Scores are self-normalized per application (a flawless extraction = 100%). Rows are kept separate per model **and** per prompt.
 
@@ -11,6 +11,8 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | human | 7e5d81ce | 99.24% | 99.69% | 98.34% | 99.69% |
 | claude-opus-4.8-high | 7e5d81ce | 86.40% | 80.04% | 86.81% | 92.34% |
 | chatGPT | 7e5d81ce | 75.41% | 75.41% | — | — |
+| claude-sonnet-medium | 7e5d81ce | 70.52% | 77.96% | 62.06% | 71.55% |
+| claude-sonnet-low | 7e5d81ce | 64.52% | 62.85% | 58.52% | 72.20% |
 | unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_XS | 7e5d81ce | 58.93% | 61.76% | 48.32% | 66.71% |
 | claude-haiku-4.5-extended | 7e5d81ce | 47.81% | 46.61% | 44.19% | 52.62% |
 | unsloth/gemma-4-31B-it-qat-GGUFUD-Q4_K_XL | 7e5d81ce | 42.15% | 50.14% | 40.63% | 35.67% |
@@ -23,6 +25,8 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | human | 7e5d81ce | 99.24% | 99.24% | 99.24% |
 | claude-opus-4.8-high | 7e5d81ce | 88.97% | 66.10% | 86.26% |
 | chatGPT | 7e5d81ce | 75.49% | 81.54% | 69.19% |
+| claude-sonnet-medium | 7e5d81ce | 76.57% | 66.25% | 68.75% |
+| claude-sonnet-low | 7e5d81ce | 65.99% | 67.53% | 60.04% |
 | unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_XS | 7e5d81ce | 62.85% | 63.73% | 50.21% |
 | claude-haiku-4.5-extended | 7e5d81ce | 53.35% | 49.89% | 40.18% |
 | unsloth/gemma-4-31B-it-qat-GGUFUD-Q4_K_XL | 7e5d81ce | 51.39% | 38.69% | 36.36% |
@@ -42,6 +46,14 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | claude-haiku-4.5-extended | 7e5d81ce | C1 | thunderbird | frontal_screenshot | 2 | 3 |
 | claude-haiku-4.5-extended | 7e5d81ce | C2 | thunderbird | frontal_photo | 3 | 3 |
 | claude-haiku-4.5-extended | 7e5d81ce | C3 | thunderbird | perspective_combined | 3 | 2 |
+| claude-sonnet-low | 7e5d81ce | A2 | outlook | frontal_photo | 1 | 1 |
+| claude-sonnet-low | 7e5d81ce | A3 | outlook | perspective_combined | 1 | 1 |
+| claude-sonnet-low | 7e5d81ce | B1 | notes | frontal_screenshot | 2 | 2 |
+| claude-sonnet-low | 7e5d81ce | B3 | notes | perspective_combined | 2 | 2 |
+| claude-sonnet-medium | 7e5d81ce | A2 | outlook | frontal_photo | 4 | 0 |
+| claude-sonnet-medium | 7e5d81ce | B1 | notes | frontal_screenshot | 4 | 4 |
+| claude-sonnet-medium | 7e5d81ce | B3 | notes | perspective_combined | 3 | 2 |
+| claude-sonnet-medium | 7e5d81ce | C2 | thunderbird | frontal_photo | 1 | 1 |
 | unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_XS | 7e5d81ce | A1 | outlook | frontal_screenshot | 1 | 1 |
 | unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_XS | 7e5d81ce | A3 | outlook | perspective_combined | 1 | 1 |
 | unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_XS | 7e5d81ce | B1 | notes | frontal_screenshot | 3 | 3 |
@@ -71,8 +83,10 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | Submission | Submitter | Model | Prompt | Run date | Images |
 |---|---|---|---|---|---|
 | `038cfc3f1cef` | KFleischer | claude-opus-4.8-high | 7e5d81ce | 2026-06-30 | 5 |
+| `3bde3cec355d` | KFleischer | claude-sonnet-low | 7e5d81ce | 2026-07-01 | 9 |
 | `49c2cf3c0c6e` | KFleischer | unsloth/gemma-4-31B-it-qat-GGUFUD-Q4_K_XL | 7e5d81ce | 2026-06-30 | 9 |
 | `82d879e79818` | KFleischer | unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M | 7e5d81ce | 2026-06-30 | 9 |
+| `8e83560d163c` | KFleischer | claude-sonnet-medium | 7e5d81ce | 2026-07-01 | 9 |
 | `a4157c0d9a66` | KFleischer | claude-haiku-4.5-extended | 7e5d81ce | 2026-06-30 | 9 |
 | `bafccfb2cf51` | KFleischer | chatGPT | 7e5d81ce | 2026-06-30 | 3 |
 | `e703341d1483` | KFleischer | human | 7e5d81ce | 2026-06-29 | 9 |
