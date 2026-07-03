@@ -11,7 +11,7 @@ your earlier, less complete submission (already-scored images are not double-
 counted). Return the file to the benchmark administrator for evaluation.
 
 ```yaml
-model: "mradermacher/Gelato-30B-A3B-i1-GGUFQ4_K_M"              # full, unambiguous model id. For local GGUF use the full
+model: "mradermacher/Gelato-30B-A3B-i1-GGUF-Q4_K_M"              # full, unambiguous model id. For local GGUF use the full
                        # Hugging Face path incl. lab/tuner + quant tag, e.g.
                        # "unsloth/gemma-3-27b-it-qat-GGUF:UD-Q4_K_XL"
 run_date: "2026-07-02"           # YYYY-MM-DD
