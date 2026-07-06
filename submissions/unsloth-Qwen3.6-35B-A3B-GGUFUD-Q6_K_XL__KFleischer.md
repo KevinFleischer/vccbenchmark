@@ -11,7 +11,7 @@ your earlier, less complete submission (already-scored images are not double-
 counted). Return the file to the benchmark administrator for evaluation.
 
 ```yaml
-model: "unsloth/Qwen3.6-35B-A3B-GGUFUD:Q6_K_XL"              # full, unambiguous model id. For local GGUF use the full
+model: "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q6_K_XL"              # full, unambiguous model id. For local GGUF use the full
                        # Hugging Face path incl. lab/tuner + quant tag, e.g.
                        # "unsloth/gemma-3-27b-it-qat-GGUF:UD-Q4_K_XL"
 run_date: "2026-07-06"           # YYYY-MM-DD
