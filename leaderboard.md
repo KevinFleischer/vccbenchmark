@@ -1,6 +1,6 @@
 # VCCB Leaderboard
 
-_Generated 2026-07-06 16:29 UTC from 113 scored images across 13 submission(s)._
+_Generated 2026-07-21 19:23 UTC from 122 scored images across 14 submission(s)._
 
 Scores are self-normalized per application (a flawless extraction = 100%). Rows are kept separate per model **and** per prompt.
 
@@ -12,6 +12,7 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | claude-opus-4.8-high | 7e5d81ce | 86.40% | 80.04% | 86.81% | 92.34% |
 | chatGPT | 7e5d81ce | 76.21% | 75.41% | 66.25% | 86.98% |
 | claude-sonnet-medium | 7e5d81ce | 70.52% | 77.96% | 62.06% | 71.55% |
+| Gemini 3.6 Flash | 7e5d81ce | 69.99% | 70.59% | 68.38% | 71.01% |
 | Qwen/Qwen3.6-27B | 7e5d81ce | 69.89% | 75.14% | 62.06% | 72.46% |
 | Qwen/Qwen3.6-27B-FP8 | 7e5d81ce | 67.52% | 72.96% | 57.26% | 72.33% |
 | claude-sonnet-low | 7e5d81ce | 64.52% | 62.85% | 58.52% | 72.20% |
@@ -30,6 +31,7 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | claude-opus-4.8-high | 7e5d81ce | 88.97% | 66.10% | 86.26% |
 | chatGPT | 7e5d81ce | 85.63% | 77.67% | 65.33% |
 | claude-sonnet-medium | 7e5d81ce | 76.57% | 66.25% | 68.75% |
+| Gemini 3.6 Flash | 7e5d81ce | 79.86% | 72.40% | 57.72% |
 | Qwen/Qwen3.6-27B | 7e5d81ce | 73.31% | 69.00% | 67.34% |
 | Qwen/Qwen3.6-27B-FP8 | 7e5d81ce | 67.83% | 68.20% | 66.52% |
 | claude-sonnet-low | 7e5d81ce | 65.99% | 67.53% | 60.04% |
@@ -44,6 +46,9 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 
 | Model | Prompt | Image | App | Condition | FP | FN |
 |---|---|---|---|---|---|---|
+| Gemini 3.6 Flash | 7e5d81ce | A3 | outlook | perspective_combined | 2 | 2 |
+| Gemini 3.6 Flash | 7e5d81ce | B3 | notes | perspective_combined | 6 | 2 |
+| Gemini 3.6 Flash | 7e5d81ce | C2 | thunderbird | frontal_photo | 1 | 1 |
 | Qwen/Qwen3.6-27B | 7e5d81ce | B2 | notes | frontal_photo | 1 | 1 |
 | Qwen/Qwen3.6-27B | 7e5d81ce | B3 | notes | perspective_combined | 5 | 2 |
 | Qwen/Qwen3.6-27B-FP8 | 7e5d81ce | B1 | notes | frontal_screenshot | 1 | 2 |
@@ -114,6 +119,7 @@ Scores are self-normalized per application (a flawless extraction = 100%). Rows 
 | Submission | Submitter | Model | Prompt | Run date | Images |
 |---|---|---|---|---|---|
 | `038cfc3f1cef` | KFleischer | claude-opus-4.8-high | 7e5d81ce | 2026-06-30 | 5 |
+| `101cc513098f` | KFleischer | Gemini 3.6 Flash | 7e5d81ce | 2026-07-21 | 9 |
 | `24b28a8c8fc0` | priorityfill | Qwen/Qwen3.6-27B-FP8 | 7e5d81ce | 2026-07-03 | 9 |
 | `3bde3cec355d` | KFleischer | claude-sonnet-low | 7e5d81ce | 2026-07-01 | 9 |
 | `7f74808158e4` | KFleischer | unsloth/gemma-4-31B-it-qat-GGUF:UD-Q4_K_XL | 7e5d81ce | 2026-06-30 | 9 |
